@@ -20,7 +20,7 @@ class NpbJp(BasePortiaSpider):
         Rule(
             LinkExtractor(
                 allow=(
-                    u'/scores/2018/\\d+/\\w\\-\\w\\-\\d\\d/',
+                    u'/scores/2018/\\d+/\\w\\-\\w\\-\\d\\d/$',
                     u'.*/schedule_\\d+_detail.html'),
                 deny=()),
             callback='parse_item',
@@ -39,7 +39,7 @@ class NpbJp(BasePortiaSpider):
                         True),
                     Field(
                         u'VisitorTeam',
-                        '.line-score > div > table > .top > th > .flag_t_2018 *::text, .line-score > div > table > tbody > .top > th > .flag_t_2018 *::text',
+                        '.line-score > div > table > .top > th > span *::text, .line-score > div > table > tbody > .top > th > span *::text',
                         []),
                     Field(
                         u'VisitorScore',
@@ -47,7 +47,7 @@ class NpbJp(BasePortiaSpider):
                         []),
                     Field(
                         u'HomeTeam',
-                        '.line-score > div > table > .bottom > th > .flag_g_2018 *::text, .line-score > div > table > tbody > .bottom > th > .flag_g_2018 *::text',
+                        '.line-score > div > table > .bottom > th > span *::text, .line-score > div > table > tbody > .bottom > th > span *::text',
                         []),
                     Field(
                         u'HomeScore',
